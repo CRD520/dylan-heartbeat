@@ -92,7 +92,7 @@ async function sendPushNotification({ title, body }) {
 
   if (provider === "ntfy") {
     const topic = String(process.env.NTFY_TOPIC || "").trim();
-    if (!topic) return { ok: false, providerLabel: "ntfy", reason: "NTFY_TOPIC 未配置" };
+   // if (!topic) return { ok: false, providerLabel: "ntfy", reason: "NTFY_TOPIC 未配置" };
 
     const server = (process.env.NTFY_SERVER_URL || "https://ntfy.sh").replace(/\/+$/, "");
     const headers = {
