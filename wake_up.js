@@ -106,9 +106,9 @@ async function sendPushNotification({ title, body }) {
       priority: process.env.NTFY_PRIORITY,
       tags: process.env.NTFY_TAGS
     });
-    console.log(`ntfyPayload：${payload}`);
+    console.log("ntfyPayload:", JSON.stringify(payload));
     console.log(`访问server：${server}`);
-
+    console.log(`发送的signal：${AbortSignal.timeout(PUSH_TIMEOUT_MS)}`);
     const response = await fetch(server, {
       method: "POST",
       signal: AbortSignal.timeout(PUSH_TIMEOUT_MS),
