@@ -106,6 +106,8 @@ async function sendPushNotification({ title, body }) {
       priority: process.env.NTFY_PRIORITY,
       tags: process.env.NTFY_TAGS
     });
+    console.log(`ntfyPayload：${payload}`);
+    console.log(`访问server：${server}`);
 
     const response = await fetch(server, {
       method: "POST",
