@@ -23,7 +23,7 @@ const TIME_ZONE = resolveTimeZone();
 const WEATHER_TIMEOUT_MS = 5000;
 const DIARY_DIR_NAME = process.env.DIARY_DIR || "diary";
 const DIARY_DIR_PATH = runtimeDirectory(DIARY_DIR_NAME, "diary");
-const PUSH_TIMEOUT_MS = readPositiveTimeout("PUSH_TIMEOUT_MS", 2000_000);
+const PUSH_TIMEOUT_MS = readPositiveTimeout("PUSH_TIMEOUT_MS", 5000_000);
 const WAKE_UPSTREAM_TIMEOUT_MS = readPositiveTimeout("WAKE_UPSTREAM_TIMEOUT_MS", 300_000);
 
 function readPositiveTimeout(key, fallback) {
@@ -111,7 +111,7 @@ async function sendPushNotification({ title, body }) {
     console.log(`发送的signal：${JSON.stringify(AbortSignal.timeout(PUSH_TIMEOUT_MS))}`);
     const response = await fetch(server, {
       method: "POST",
-      signal: AbortSignal.timeout(PUSH_TIMEOUT_MS),
+      //signal: AbortSignal.timeout(PUSH_TIMEOUT_MS),
       headers,
       body: JSON.stringify(payload)
     });
